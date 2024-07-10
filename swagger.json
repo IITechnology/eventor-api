@@ -1,0 +1,1497 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/auth/login": {
+      "post": {
+        "operationId": "AuthController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginUserDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "authentication"
+        ]
+      }
+    },
+    "/api/auth/signup": {
+      "post": {
+        "operationId": "AuthController_signUp",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "authentication"
+        ]
+      }
+    },
+    "/api/auth/resetPassword": {
+      "put": {
+        "operationId": "AuthController_setPassword",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "authentication"
+        ]
+      }
+    },
+    "/api/auth/updateFCM": {
+      "put": {
+        "operationId": "AuthController_setFCM",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFCMTokenDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "authentication"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/client": {
+      "post": {
+        "operationId": "ClientController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateClientDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "client"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "ClientController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "client"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/client/{id}": {
+      "get": {
+        "operationId": "ClientController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "client"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "ClientController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClientDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "client"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "ClientController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "client"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/lifter": {
+      "post": {
+        "operationId": "LifterController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLifterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "lifter"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "LifterController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "lifter"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/lifter/{id}": {
+      "get": {
+        "operationId": "LifterController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "lifter"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "LifterController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateLifterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "lifter"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "LifterController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "lifter"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/admin": {
+      "post": {
+        "operationId": "AdminController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAdminDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "AdminController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/admin/{id}": {
+      "get": {
+        "operationId": "AdminController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "AdminController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAdminDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "AdminController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/service-request": {
+      "post": {
+        "operationId": "ServiceRequestController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateServiceRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "service-request"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "ServiceRequestController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "service-request"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/service-request/{ids}": {
+      "get": {
+        "operationId": "ServiceRequestController_findOne",
+        "parameters": [
+          {
+            "name": "ids",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "service-request"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/service-request/srUpdate/{id}": {
+      "patch": {
+        "operationId": "ServiceRequestController_updateServiceRequest",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSRLifterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "service-request"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/roster": {
+      "post": {
+        "operationId": "RosterController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRosterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "roster"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "RosterController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "roster"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/roster/{id}": {
+      "get": {
+        "operationId": "RosterController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "roster"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "RosterController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRosterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "roster"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "RosterController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "roster"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/notification/send-push-notification": {
+      "post": {
+        "operationId": "NotificationController_sendNotification",
+        "parameters": [
+          {
+            "name": "token",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "title",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "msg",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "notification"
+        ]
+      }
+    },
+    "/api/pdf/pdf": {
+      "get": {
+        "operationId": "PdfController_getPDF",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "pdf"
+        ]
+      }
+    },
+    "/api/invoice/generate/{id}": {
+      "get": {
+        "operationId": "InvoiceController_generateInvoice",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "invoice"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "BENTECH",
+    "description": "",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
+    "schemas": {
+      "LoginUserDto": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "kaur@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "12345678",
+            "description": "Minimum 8 characters password"
+          }
+        },
+        "required": [
+          "username",
+          "password"
+        ]
+      },
+      "CreateUserDto": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "string",
+            "example": "lifter",
+            "enum": [
+              "lifter",
+              "client",
+              "admin"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "example": "John Sharma"
+          },
+          "email": {
+            "type": "string",
+            "example": "john@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "12345678",
+            "description": "Minimum 8 characters required"
+          },
+          "contactNo": {
+            "type": "string",
+            "example": "989-999-9292"
+          },
+          "deviceType": {
+            "type": "string",
+            "example": "android"
+          },
+          "notificationToken": {
+            "type": "string",
+            "example": "dfdsfdsffdsfdsfsd32432dbsdg7y432jfnduy329824y"
+          }
+        },
+        "required": [
+          "role",
+          "name",
+          "email",
+          "password",
+          "contactNo",
+          "deviceType",
+          "notificationToken"
+        ]
+      },
+      "ResetPasswordDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "kaur@gmail.com"
+          },
+          "newPassword": {
+            "type": "string",
+            "example": "12345678",
+            "description": "Minimum 8 characters password"
+          }
+        },
+        "required": [
+          "email",
+          "newPassword"
+        ]
+      },
+      "UpdateFCMTokenDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "kaur@gmail.com"
+          },
+          "token": {
+            "type": "string",
+            "example": "1234fetrt5678"
+          }
+        },
+        "required": [
+          "email",
+          "token"
+        ]
+      },
+      "CreateClientDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "John"
+          },
+          "email": {
+            "type": "string",
+            "example": "xyz@gmail.com"
+          },
+          "contactNo": {
+            "type": "string",
+            "example": "998-222-9494"
+          },
+          "address": {
+            "type": "string",
+            "example": "plot no-123, phase 8"
+          },
+          "district": {
+            "type": "string",
+            "example": "mohali"
+          },
+          "state": {
+            "type": "string",
+            "example": "punjab"
+          },
+          "latitude": {
+            "type": "string",
+            "example": "56.646546"
+          },
+          "longitude": {
+            "type": "string",
+            "example": "23.565656"
+          },
+          "gstNo": {
+            "type": "string",
+            "example": "24fsd4321266"
+          },
+          "effluentType": {
+            "type": "string",
+            "enum": [
+              "electroplating",
+              "pickling",
+              "washing"
+            ]
+          },
+          "effluentRate": {
+            "type": "number",
+            "example": "22"
+          },
+          "monthlyEffluentGenerated": {
+            "type": "string",
+            "example": "daily"
+          },
+          "storageTank": {
+            "type": "number",
+            "example": "7000"
+          },
+          "agreementStartDate": {
+            "type": "object",
+            "default": "7/10/2024"
+          },
+          "agreementEndDate": {
+            "type": "object",
+            "example": "7/10/2024"
+          },
+          "industryCategory": {
+            "type": "string",
+            "enum": [
+              "red",
+              "yellow",
+              "green"
+            ]
+          },
+          "securityDeposit": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "completed"
+            ]
+          },
+          "membershipFees": {
+            "type": "number",
+            "example": "12000"
+          },
+          "remarks": {
+            "type": "string",
+            "example": ""
+          },
+          "Status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "email",
+          "contactNo",
+          "address",
+          "district",
+          "state",
+          "latitude",
+          "longitude",
+          "gstNo",
+          "effluentType",
+          "effluentRate",
+          "monthlyEffluentGenerated",
+          "storageTank",
+          "agreementStartDate",
+          "agreementEndDate",
+          "industryCategory",
+          "securityDeposit",
+          "membershipFees",
+          "remarks",
+          "Status"
+        ]
+      },
+      "UpdateClientDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "John"
+          },
+          "contactNo": {
+            "type": "string",
+            "example": "998-222-9494"
+          },
+          "address": {
+            "type": "string",
+            "example": "plot no-123, phase 8"
+          },
+          "district": {
+            "type": "string",
+            "example": "mohali"
+          },
+          "state": {
+            "type": "string",
+            "example": "punjab"
+          },
+          "latitude": {
+            "type": "string",
+            "example": "56.646546"
+          },
+          "longitude": {
+            "type": "string",
+            "example": "23.565656"
+          },
+          "gstNo": {
+            "type": "string",
+            "example": "24fsd4321266"
+          },
+          "effluentType": {
+            "type": "string",
+            "enum": [
+              "electroplating",
+              "pickling",
+              "washing"
+            ]
+          },
+          "effluentRate": {
+            "type": "number",
+            "example": "22"
+          },
+          "monthlyEffluentGenerated": {
+            "type": "string",
+            "example": "daily"
+          },
+          "storageTank": {
+            "type": "number",
+            "example": "7000"
+          },
+          "agreementStartDate": {
+            "type": "object",
+            "default": "7/10/2024"
+          },
+          "agreementEndDate": {
+            "type": "object",
+            "example": "7/10/2024"
+          },
+          "industryCategory": {
+            "type": "string",
+            "enum": [
+              "red",
+              "yellow",
+              "green"
+            ]
+          },
+          "securityDeposit": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "completed"
+            ]
+          },
+          "membershipFees": {
+            "type": "number",
+            "example": "12000"
+          },
+          "remarks": {
+            "type": "string",
+            "example": ""
+          },
+          "Status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "contactNo",
+          "address",
+          "district",
+          "state",
+          "latitude",
+          "longitude",
+          "gstNo",
+          "effluentType",
+          "effluentRate",
+          "monthlyEffluentGenerated",
+          "storageTank",
+          "agreementStartDate",
+          "agreementEndDate",
+          "industryCategory",
+          "securityDeposit",
+          "membershipFees",
+          "remarks",
+          "Status"
+        ]
+      },
+      "CreateLifterDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "John"
+          },
+          "email": {
+            "type": "string",
+            "example": "xyz@gmail.com"
+          },
+          "contactNo": {
+            "type": "string",
+            "example": "998-222-9494"
+          },
+          "address": {
+            "type": "string",
+            "example": "plot no-123, phase 8"
+          },
+          "vehicleNo": {
+            "type": "string",
+            "example": "24fsd4321266"
+          },
+          "Status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "email",
+          "contactNo",
+          "address",
+          "vehicleNo",
+          "Status"
+        ]
+      },
+      "UpdateLifterDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "John"
+          },
+          "contactNo": {
+            "type": "string",
+            "example": "998-222-9494"
+          },
+          "address": {
+            "type": "string",
+            "example": "plot no-123, phase 8"
+          },
+          "vehicleNo": {
+            "type": "string",
+            "example": "24fsd4321266"
+          },
+          "Status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "contactNo",
+          "address",
+          "vehicleNo",
+          "Status"
+        ]
+      },
+      "CreateAdminDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "John"
+          },
+          "email": {
+            "type": "string",
+            "example": "xyz@gmail.com"
+          },
+          "contactNo": {
+            "type": "string",
+            "example": "998-222-9494"
+          },
+          "address": {
+            "type": "string",
+            "example": "house no-123, sector 8"
+          },
+          "Status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "email",
+          "contactNo",
+          "address",
+          "Status"
+        ]
+      },
+      "UpdateAdminDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "John"
+          },
+          "contactNo": {
+            "type": "string",
+            "example": "998-222-9494"
+          },
+          "address": {
+            "type": "string",
+            "example": "house no-123, sector 8"
+          },
+          "Status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "contactNo",
+          "address",
+          "Status"
+        ]
+      },
+      "CreateServiceRequestDto": {
+        "type": "object",
+        "properties": {
+          "requestedTime": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2024-07-10T17:43:51.189Z"
+          },
+          "requestedQty": {
+            "type": "number",
+            "example": "5000"
+          },
+          "Type": {
+            "type": "string",
+            "enum": [
+              "fluid",
+              "solid",
+              "semi-solid"
+            ]
+          }
+        },
+        "required": [
+          "requestedTime",
+          "requestedQty",
+          "Type"
+        ]
+      },
+      "UpdateSRLifterDto": {
+        "type": "object",
+        "properties": {
+          "lifterId": {
+            "type": "number",
+            "example": 1
+          },
+          "rosterId": {
+            "type": "number",
+            "example": 1
+          },
+          "pickupTime": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2024-07-10T17:43:51.189Z"
+          },
+          "pickupQty": {
+            "type": "number",
+            "example": "5000"
+          },
+          "sendReport": {
+            "type": "boolean",
+            "example": true
+          },
+          "lifterFeedback": {
+            "type": "string",
+            "example": "Type your Feedback"
+          },
+          "Status": {
+            "type": "string",
+            "example": "completed",
+            "enum": [
+              "pending",
+              "completed",
+              "inprogress",
+              "assign",
+              "cancelled"
+            ]
+          }
+        },
+        "required": [
+          "lifterId",
+          "rosterId",
+          "pickupTime",
+          "pickupQty",
+          "sendReport",
+          "lifterFeedback",
+          "Status"
+        ]
+      },
+      "CreateRosterDto": {
+        "type": "object",
+        "properties": {
+          "serviceRequestId": {
+            "example": [
+              1,
+              2,
+              3
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "assignedTime": {
+            "format": "date-time",
+            "type": "string",
+            "default": "2024-07-10T17:43:51.191Z"
+          },
+          "location": {
+            "type": "string",
+            "example": "Mohali"
+          },
+          "vehicleNo": {
+            "type": "string",
+            "example": "PB01-33-3333"
+          },
+          "lifterId": {
+            "type": "number",
+            "example": 1
+          },
+          "Status": {
+            "type": "string",
+            "example": "completed",
+            "enum": [
+              "pending",
+              "completed",
+              "inprogress",
+              "assign",
+              "cancelled"
+            ]
+          }
+        },
+        "required": [
+          "serviceRequestId",
+          "assignedTime",
+          "location",
+          "vehicleNo",
+          "lifterId",
+          "Status"
+        ]
+      },
+      "UpdateRosterDto": {
+        "type": "object",
+        "properties": {
+          "assignedTime": {
+            "format": "date-time",
+            "type": "string",
+            "default": "2024-07-10T17:43:51.191Z"
+          },
+          "vehicleNo": {
+            "type": "string",
+            "example": "PB01-33-3333"
+          },
+          "Status": {
+            "type": "string",
+            "example": "completed",
+            "enum": [
+              "pending",
+              "completed",
+              "inprogress",
+              "assign",
+              "cancelled"
+            ]
+          }
+        },
+        "required": [
+          "assignedTime",
+          "vehicleNo",
+          "Status"
+        ]
+      }
+    }
+  }
+}
