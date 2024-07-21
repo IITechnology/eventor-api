@@ -78,7 +78,7 @@ export class AuthService {
     }
     const { password, ...result } = user['dataValues'];
     const token = await this.generateToken(result);
-    const subject = "YOUR PASSWORD RESET TOKEN FROM BENTECH APP"; 
+    const subject = "YOUR PASSWORD RESET TOKEN FROM EVENTOR APP"; 
     const resetLink = `http://your-app-url/validate-token/${token}`;
     const emailText = `Click the following link to reset your password: ${resetLink}`;
     //await this.email.sendEmail(user.email, subject, emailText)

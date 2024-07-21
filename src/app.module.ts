@@ -14,6 +14,7 @@ import { PdfModule } from './pdf/pdf.module';
 import { InvoiceModule } from './invoice/invoice.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { EmailModule } from './email/email.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { join } from 'path';
     NotificationModule,
     PdfModule,
     InvoiceModule,
+    EmailModule
   ],
   controllers: [],
 })

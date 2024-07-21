@@ -20,7 +20,7 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter());
 
   const config = new DocumentBuilder()
-    .setTitle('BENTECH')
+    .setTitle('EVENTOR')
     .setVersion('1.0')
     .addBearerAuth()
     .build();

@@ -836,10 +836,24 @@
           "invoice"
         ]
       }
+    },
+    "/api/email/create-campaign": {
+      "post": {
+        "operationId": "EmailController_createEmailCampaign",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "email"
+        ]
+      }
     }
   },
   "info": {
-    "title": "BENTECH",
+    "title": "EVENTOR",
     "description": "",
     "version": "1.0",
     "contact": {}
@@ -1017,11 +1031,11 @@
           },
           "agreementStartDate": {
             "type": "object",
-            "default": "7/10/2024"
+            "default": "7/21/2024"
           },
           "agreementEndDate": {
             "type": "object",
-            "example": "7/10/2024"
+            "example": "7/21/2024"
           },
           "industryCategory": {
             "type": "string",
@@ -1134,11 +1148,11 @@
           },
           "agreementStartDate": {
             "type": "object",
-            "default": "7/10/2024"
+            "default": "7/21/2024"
           },
           "agreementEndDate": {
             "type": "object",
-            "example": "7/10/2024"
+            "example": "7/21/2024"
           },
           "industryCategory": {
             "type": "string",
@@ -1339,7 +1353,7 @@
           "requestedTime": {
             "format": "date-time",
             "type": "string",
-            "example": "2024-07-10T17:43:51.189Z"
+            "example": "2024-07-21T11:01:19.178Z"
           },
           "requestedQty": {
             "type": "number",
@@ -1374,7 +1388,7 @@
           "pickupTime": {
             "format": "date-time",
             "type": "string",
-            "example": "2024-07-10T17:43:51.189Z"
+            "example": "2024-07-21T11:01:19.179Z"
           },
           "pickupQty": {
             "type": "number",
@@ -1427,7 +1441,7 @@
           "assignedTime": {
             "format": "date-time",
             "type": "string",
-            "default": "2024-07-10T17:43:51.191Z"
+            "default": "2024-07-21T11:01:19.180Z"
           },
           "location": {
             "type": "string",
@@ -1468,7 +1482,7 @@
           "assignedTime": {
             "format": "date-time",
             "type": "string",
-            "default": "2024-07-10T17:43:51.191Z"
+            "default": "2024-07-21T11:01:19.180Z"
           },
           "vehicleNo": {
             "type": "string",
