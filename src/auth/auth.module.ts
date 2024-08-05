@@ -10,6 +10,7 @@ import { UsersModule } from '../users/users.module';
 import { ClientModule } from '../client/client.module';
 import { LifterModule } from '../lifter/lifter.module';
 import { AdminModule } from '../admin/admin.module';
+import { EventModule } from 'src/event/event.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { AdminModule } from '../admin/admin.module';
     UsersModule,
     ClientModule,
     LifterModule,
+    EventModule,
     AdminModule,
     JwtModule.register({
       secret: process.env.JWTKEY,

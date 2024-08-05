@@ -7,6 +7,7 @@ import { ServiceRequest } from '../../service-request/entities/service-request.e
 import { Lifter } from '../../lifter/entities/lifter.entity';
 import { Admin } from '../../admin/entities/admin.entity';
 import { Roster } from '../../roster/entities/roster.entity';
+import { Events } from 'src/event/entities/event.entity';
 
 export const databaseProviders = [
   {
@@ -27,7 +28,7 @@ export const databaseProviders = [
           config = databaseConfig.development;
       }
       const sequelize = new Sequelize(config);
-      sequelize.addModels([User, Client, ServiceRequest, Lifter, Admin, Roster]);
+      sequelize.addModels([User, Client, ServiceRequest, Lifter, Admin, Roster, Events]);
       await sequelize.sync();
       return sequelize;
     },

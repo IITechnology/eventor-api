@@ -374,6 +374,142 @@
         ]
       }
     },
+    "/api/events": {
+      "post": {
+        "operationId": "EventsController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateEventDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "events"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "EventsController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "events"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/events/{id}": {
+      "get": {
+        "operationId": "EventsController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "events"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "EventsController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateEventDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "events"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "EventsController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "events"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
     "/api/admin": {
       "post": {
         "operationId": "AdminController_create",
@@ -1031,11 +1167,11 @@
           },
           "agreementStartDate": {
             "type": "object",
-            "default": "7/21/2024"
+            "default": "8/6/2024"
           },
           "agreementEndDate": {
             "type": "object",
-            "example": "7/21/2024"
+            "example": "8/6/2024"
           },
           "industryCategory": {
             "type": "string",
@@ -1148,11 +1284,11 @@
           },
           "agreementStartDate": {
             "type": "object",
-            "default": "7/21/2024"
+            "default": "8/6/2024"
           },
           "agreementEndDate": {
             "type": "object",
-            "example": "7/21/2024"
+            "example": "8/6/2024"
           },
           "industryCategory": {
             "type": "string",
@@ -1282,6 +1418,90 @@
           "Status"
         ]
       },
+      "CreateEventDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Sample Title"
+          },
+          "description": {
+            "type": "string",
+            "example": "Sample description"
+          },
+          "eventDate": {
+            "type": "string",
+            "example": "12/12/2024"
+          },
+          "start_time": {
+            "type": "string",
+            "example": "10:00 AM"
+          },
+          "end_time": {
+            "type": "string",
+            "example": "11:00 AM"
+          },
+          "location": {
+            "type": "string",
+            "example": "Punjab,India"
+          },
+          "coverImage": {
+            "type": "string",
+            "example": "https://unsplash.it/20/20?id=1"
+          }
+        },
+        "required": [
+          "title",
+          "description",
+          "eventDate",
+          "start_time",
+          "end_time",
+          "location",
+          "coverImage"
+        ]
+      },
+      "UpdateEventDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Sample Title"
+          },
+          "description": {
+            "type": "string",
+            "example": "Sample description"
+          },
+          "eventDate": {
+            "type": "string",
+            "example": "12/12/2024"
+          },
+          "start_time": {
+            "type": "string",
+            "example": "10:00 AM"
+          },
+          "end_time": {
+            "type": "string",
+            "example": "11:00 AM"
+          },
+          "location": {
+            "type": "string",
+            "example": "Punjab,India"
+          },
+          "coverImage": {
+            "type": "string",
+            "example": "https://unsplash.it/20/20?id=1"
+          }
+        },
+        "required": [
+          "title",
+          "description",
+          "eventDate",
+          "start_time",
+          "end_time",
+          "location",
+          "coverImage"
+        ]
+      },
       "CreateAdminDto": {
         "type": "object",
         "properties": {
@@ -1353,7 +1573,7 @@
           "requestedTime": {
             "format": "date-time",
             "type": "string",
-            "example": "2024-07-21T11:01:19.178Z"
+            "example": "2024-08-05T21:31:25.560Z"
           },
           "requestedQty": {
             "type": "number",
@@ -1388,7 +1608,7 @@
           "pickupTime": {
             "format": "date-time",
             "type": "string",
-            "example": "2024-07-21T11:01:19.179Z"
+            "example": "2024-08-05T21:31:25.563Z"
           },
           "pickupQty": {
             "type": "number",
@@ -1441,7 +1661,7 @@
           "assignedTime": {
             "format": "date-time",
             "type": "string",
-            "default": "2024-07-21T11:01:19.180Z"
+            "default": "2024-08-05T21:31:25.584Z"
           },
           "location": {
             "type": "string",
@@ -1482,7 +1702,7 @@
           "assignedTime": {
             "format": "date-time",
             "type": "string",
-            "default": "2024-07-21T11:01:19.180Z"
+            "default": "2024-08-05T21:31:25.584Z"
           },
           "vehicleNo": {
             "type": "string",

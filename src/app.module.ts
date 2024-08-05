@@ -15,6 +15,7 @@ import { InvoiceModule } from './invoice/invoice.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { EmailModule } from './email/email.module';
+import { EventModule } from './event/event.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { EmailModule } from './email/email.module';
     ServiceRequestModule,
     AdminModule,
     LifterModule,
+    EventModule,
     RosterModule,
     NotificationModule,
     PdfModule,
