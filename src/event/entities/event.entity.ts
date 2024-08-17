@@ -29,8 +29,16 @@ export class Events extends Model<Events> {
   end_time: string;
 
   @AllowNull(false)
+  @Column(DataType.STRING(200))
+  address: string;
+
+  @AllowNull(false)
   @Column(DataType.STRING(100))
-  location: string;
+  city: string;
+
+  @AllowNull(false)
+  @Column(DataType.STRING(100))
+  category: string;
 
   @AllowNull(false)
   @Column(DataType.STRING(100))

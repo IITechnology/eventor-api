@@ -45,8 +45,29 @@ import { ApiProperty } from '@nestjs/swagger';
       required: true,
     })
     @IsNotEmpty()
-    readonly location: string;
+    readonly address: string;
+
+    @ApiProperty({
+      example: 'Ambala',
+      required: true,
+    })
+
+    @IsNotEmpty()
+    readonly city: string;
   
+    @ApiProperty({
+      example: 'Category 1',
+      required: true,
+    })
+
+    @IsNotEmpty()
+    readonly category: string;
+    
+    @ApiProperty({
+      example: 'Category-1',
+      required: true,
+    })
+    
     @ApiProperty({
       example: 'https://unsplash.it/20/20?id=1',
       required: true,
