@@ -16,6 +16,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { EmailModule } from './email/email.module';
 import { EventModule } from './event/event.module';
+import { CategoryModule } from './category/category.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { EventModule } from './event/event.module';
     AdminModule,
     LifterModule,
     EventModule,
+    CategoryModule,
     RosterModule,
     NotificationModule,
     PdfModule,

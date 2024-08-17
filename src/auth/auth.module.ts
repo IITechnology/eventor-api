@@ -11,6 +11,7 @@ import { ClientModule } from '../client/client.module';
 import { LifterModule } from '../lifter/lifter.module';
 import { AdminModule } from '../admin/admin.module';
 import { EventModule } from 'src/event/event.module';
+import { CategoryModule } from 'src/category/category.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { EventModule } from 'src/event/event.module';
     ClientModule,
     LifterModule,
     EventModule,
+    CategoryModule,
     AdminModule,
     JwtModule.register({
       secret: process.env.JWTKEY,

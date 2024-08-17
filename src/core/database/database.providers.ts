@@ -8,6 +8,7 @@ import { Lifter } from '../../lifter/entities/lifter.entity';
 import { Admin } from '../../admin/entities/admin.entity';
 import { Roster } from '../../roster/entities/roster.entity';
 import { Events } from 'src/event/entities/event.entity';
+import { Category } from 'src/category/entities/category.entity';
 
 export const databaseProviders = [
   {
@@ -28,7 +29,7 @@ export const databaseProviders = [
           config = databaseConfig.development;
       }
       const sequelize = new Sequelize(config);
-      sequelize.addModels([User, Client, ServiceRequest, Lifter, Admin, Roster, Events]);
+      sequelize.addModels([User, Client, ServiceRequest, Lifter, Admin, Roster, Events, Category]);
       await sequelize.sync();
       return sequelize;
     },
