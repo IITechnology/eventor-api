@@ -39,3 +39,8 @@ export enum SampleCollectorType {
     SOLID  = 'solid',
     SEMISOLID  = 'semi-solid'
 }
+
+export enum CategoryIcon {
+    icon = 'icon',
+    image  = 'image',
+}

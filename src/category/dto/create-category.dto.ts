@@ -26,5 +26,11 @@ import { ApiProperty } from '@nestjs/swagger';
     @IsNotEmpty()
     readonly categoryImage: string;
 
+    @ApiProperty({
+      example: 'icon',
+      required: true,
+    })
+    @IsNotEmpty()
+    readonly categoryIcon: string;
 }
   

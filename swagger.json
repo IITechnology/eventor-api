@@ -510,6 +510,142 @@
         ]
       }
     },
+    "/api/category": {
+      "post": {
+        "operationId": "CategoryController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCategoryDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "category"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "CategoryController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "category"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/category/{id}": {
+      "get": {
+        "operationId": "CategoryController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "category"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "CategoryController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCategoryDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "category"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "CategoryController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "category"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
     "/api/admin": {
       "post": {
         "operationId": "AdminController_create",
@@ -1167,11 +1303,11 @@
           },
           "agreementStartDate": {
             "type": "object",
-            "default": "8/6/2024"
+            "default": "8/28/2024"
           },
           "agreementEndDate": {
             "type": "object",
-            "example": "8/6/2024"
+            "example": "8/28/2024"
           },
           "industryCategory": {
             "type": "string",
@@ -1284,11 +1420,11 @@
           },
           "agreementStartDate": {
             "type": "object",
-            "default": "8/6/2024"
+            "default": "8/28/2024"
           },
           "agreementEndDate": {
             "type": "object",
-            "example": "8/6/2024"
+            "example": "8/28/2024"
           },
           "industryCategory": {
             "type": "string",
@@ -1441,13 +1577,21 @@
             "type": "string",
             "example": "11:00 AM"
           },
-          "location": {
+          "address": {
             "type": "string",
             "example": "Punjab,India"
           },
+          "city": {
+            "type": "string",
+            "example": "Ambala"
+          },
+          "category": {
+            "type": "string",
+            "example": "Category 1"
+          },
           "coverImage": {
             "type": "string",
-            "example": "https://unsplash.it/20/20?id=1"
+            "example": "Category-1"
           }
         },
         "required": [
@@ -1456,7 +1600,9 @@
           "eventDate",
           "start_time",
           "end_time",
-          "location",
+          "address",
+          "city",
+          "category",
           "coverImage"
         ]
       },
@@ -1483,13 +1629,21 @@
             "type": "string",
             "example": "11:00 AM"
           },
-          "location": {
+          "address": {
             "type": "string",
             "example": "Punjab,India"
           },
+          "city": {
+            "type": "string",
+            "example": "Ambala"
+          },
+          "category": {
+            "type": "string",
+            "example": "Category 1"
+          },
           "coverImage": {
             "type": "string",
-            "example": "https://unsplash.it/20/20?id=1"
+            "example": "Category-1"
           }
         },
         "required": [
@@ -1498,8 +1652,62 @@
           "eventDate",
           "start_time",
           "end_time",
-          "location",
+          "address",
+          "city",
+          "category",
           "coverImage"
+        ]
+      },
+      "CreateCategoryDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Sample TitleCat"
+          },
+          "description": {
+            "type": "string",
+            "example": "Sample description"
+          },
+          "categoryImage": {
+            "type": "string",
+            "example": "https://unsplash.it/20/20?id=1"
+          },
+          "categoryIcon": {
+            "type": "string",
+            "example": "icon"
+          }
+        },
+        "required": [
+          "title",
+          "description",
+          "categoryIcon"
+        ]
+      },
+      "UpdateCategoryDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Sample TitleCat"
+          },
+          "description": {
+            "type": "string",
+            "example": "Sample description"
+          },
+          "categoryImage": {
+            "type": "string",
+            "example": "https://unsplash.it/20/20?id=1"
+          },
+          "categoryIcon": {
+            "type": "string",
+            "example": "icon"
+          }
+        },
+        "required": [
+          "title",
+          "description",
+          "categoryIcon"
         ]
       },
       "CreateAdminDto": {
@@ -1573,7 +1781,7 @@
           "requestedTime": {
             "format": "date-time",
             "type": "string",
-            "example": "2024-08-05T21:31:25.560Z"
+            "example": "2024-08-28T11:51:32.028Z"
           },
           "requestedQty": {
             "type": "number",
@@ -1608,7 +1816,7 @@
           "pickupTime": {
             "format": "date-time",
             "type": "string",
-            "example": "2024-08-05T21:31:25.563Z"
+            "example": "2024-08-28T11:51:32.031Z"
           },
           "pickupQty": {
             "type": "number",
@@ -1661,7 +1869,7 @@
           "assignedTime": {
             "format": "date-time",
             "type": "string",
-            "default": "2024-08-05T21:31:25.584Z"
+            "default": "2024-08-28T11:51:32.053Z"
           },
           "location": {
             "type": "string",
@@ -1702,7 +1910,7 @@
           "assignedTime": {
             "format": "date-time",
             "type": "string",
-            "default": "2024-08-05T21:31:25.584Z"
+            "default": "2024-08-28T11:51:32.053Z"
           },
           "vehicleNo": {
             "type": "string",

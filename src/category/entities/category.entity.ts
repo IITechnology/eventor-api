@@ -1,4 +1,5 @@
 import { Table, Column, Model, DataType, AllowNull, Unique, Default } from 'sequelize-typescript';
+import { CategoryIcon } from 'src/core/enum';
 
 @Table({
   paranoid: true,
@@ -19,8 +20,12 @@ export class Category extends Model<Category> {
   @Column(DataType.STRING(100))
   categoryImage: string;
 
-  // @AllowNull(false)
-  // @Column(DataType.BIGINT())
-  // userId: number;
+  @AllowNull(false)
+  @Default(CategoryIcon.icon)
+  @Column({
+    type: DataType.ENUM,
+    values: Object.values(CategoryIcon)
+  })
+    categoryIcon: string
 
 }
