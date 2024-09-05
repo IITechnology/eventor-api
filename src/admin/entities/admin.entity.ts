@@ -23,6 +23,12 @@ export class Admin extends Model<Admin> {
   @Column(DataType.STRING(150))
   address: string;
 
+  @Column(DataType.STRING(255))
+  about: string;
+
+  @Column(DataType.STRING(255))
+  dob: string;
+
   @Default(Membership_Status.ACTIVE)
   @Column({
     type: DataType.ENUM,

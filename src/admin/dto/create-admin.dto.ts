@@ -31,6 +31,18 @@ import { Membership_Status } from '../../core/enum';
     })
     readonly address?: string; 
 
+    @ApiProperty({
+      example: 'dd/mm/yyyy',
+      required: true,      
+    })
+    readonly dob?: string;   
+
+    @ApiProperty({
+      example: '',
+      required: true,      
+    })
+    readonly about?: string;   
+
     @IsEnum(Membership_Status)
     @ApiProperty({
       enum: Membership_Status

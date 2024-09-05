@@ -1,8 +1,6 @@
 import { Controller, Body, Post, Put, Param, UseGuards, Request,ForbiddenException,HttpStatus,UnauthorizedException } from '@nestjs/common';
 import { LocalAuthGuard } from '../core/guards/local-auth.guard';
-import { ClientService } from '../client/client.service';
 import { AuthService } from './auth.service';
-import { LifterService } from '../lifter/lifter.service';
 import { AdminService } from '../admin/admin.service';
 import { CreateUserDto } from '../users/dto/createuser.dto';
 import { LoginUserDto } from '../users/dto/loginuser.dto';
@@ -10,15 +8,15 @@ import { DoesUserExist } from '../core/guards/doesUserExist.guard';
 import { LogoutGuard } from '../core/guards/logout.guard';
 import { ApiTags,ApiBearerAuth } from '@nestjs/swagger';
 import { RoleType } from '../core/enum';
-import { CreateClientDto } from '../client/dto/createclient.dto';
 import { ResetPasswordDto } from '../users/dto/resetPassword.dto';
 import { JwtAuthGuard } from '../core/guards/jwt-auth.guard';
 import { RolesGuard } from '../core/guards/roles.guard';
 import { UpdateFCMTokenDto } from '../users/dto/updateFCMToken.dto';
+import { CreateAdminDto } from 'src/admin/dto/create-admin.dto';
 @ApiTags('authentication')
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService, private clientService: ClientService, private lifterService: LifterService, private adminService: AdminService) {}
+  constructor(private authService: AuthService, private adminService: AdminService) {}
 
   @UseGuards(LocalAuthGuard)
   @Post('login')
@@ -38,7 +36,7 @@ export class AuthController {
         const loginResponse = await this.authService.create(user);
         if(loginResponse){
               let mainEntryResponse:any;
-              let usertype: CreateClientDto={
+              let usertype: CreateAdminDto ={
                 name: user.name,
                 email: user.email,
                 contactNo: user?.contactNo
@@ -46,14 +44,6 @@ export class AuthController {
               switch(user.role){
                 case RoleType.ADMIN :{
                   mainEntryResponse= await this.adminService.create(usertype);
-                  break;
-                }
-                case RoleType.CLIENT :{
-                  mainEntryResponse= await this.clientService.create(usertype);
-                  break;
-                }
-                default: {
-                  mainEntryResponse= await this.lifterService.create(usertype);
                   break;
                 }
             }

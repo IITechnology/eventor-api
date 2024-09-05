@@ -5,8 +5,8 @@ import { AdminService } from './admin.service';
 import { AdminController } from './admin.controller';
 import { AdminProviders } from './admin.providers';
 import { AuthService } from '../auth/auth.service';
-import { ServiceRequestService } from '../service-request/service-request.service';
-import { ServiceRequestProviders } from '../service-request/service-request.providers';
+// import { ServiceRequestService } from '../service-request/service-request.service';
+// import { ServiceRequestProviders } from '../service-request/service-request.providers';
 import { UsersModule } from '../users/users.module';
 
 @Module({
@@ -19,7 +19,7 @@ import { UsersModule } from '../users/users.module';
     }),
   ],
   controllers: [AdminController],
-  providers: [ServiceRequestService, ...ServiceRequestProviders, AuthService, AdminService, ...AdminProviders],
+  providers: [ AuthService, AdminService, ...AdminProviders],
   exports: [AdminService]
 })
 export class AdminModule {}

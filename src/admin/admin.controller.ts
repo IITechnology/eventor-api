@@ -22,7 +22,6 @@ import { CreateUserDto } from '../users/dto/createuser.dto';
 import { RoleType } from '../core/enum';
 import { AuthService } from '../auth/auth.service';
 import { ApiTags,ApiBearerAuth } from '@nestjs/swagger';
-import { ServiceRequestService } from '../service-request/service-request.service';
 import { Roles } from '../core/decorator/roles.decorator';
 
 @ApiTags('admin')
@@ -31,7 +30,7 @@ import { Roles } from '../core/decorator/roles.decorator';
 @UseGuards(JwtAuthGuard,RolesGuard)
 @Controller('admin')
 export class AdminController {
-  constructor(private readonly adminService: AdminService, private readonly ServiceRequestService: ServiceRequestService, private authService: AuthService) {}
+  constructor(private readonly adminService: AdminService, private authService: AuthService) {}
 
   @Post()
   async create(@Body() AdminDto: CreateAdminDto) {
