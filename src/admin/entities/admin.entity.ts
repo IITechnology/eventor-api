@@ -1,5 +1,5 @@
 import { Table, Column, Model, DataType, AllowNull, Unique, Default } from 'sequelize-typescript';
-import { Membership_Status } from '../../core/enum';
+import { GenderType, Membership_Status } from '../../core/enum';
 
 @Table({
   paranoid: true,
@@ -29,6 +29,13 @@ export class Admin extends Model<Admin> {
   @Column(DataType.STRING(255))
   dob: string;
 
+  @Default(GenderType.MALE)
+  @Column({
+    type: DataType.ENUM,
+    values: Object.values(GenderType)
+  })
+  gender: string;
+  
   @Column(DataType.STRING(255))
   profileImg: string;
 

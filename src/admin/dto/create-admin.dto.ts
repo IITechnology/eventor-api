@@ -37,6 +37,13 @@ import { Membership_Status } from '../../core/enum';
     })
     readonly dob?: string;   
 
+    @IsNotEmpty()
+    @ApiProperty({
+      example: 'male',
+      required: true,      
+    })
+    readonly gender: string;   
+
     @ApiProperty({
       example: '',
       required: true,      

@@ -19,6 +19,11 @@ export enum Membership_Status {
     ACTIVE = 'active',
     INACTIVE  = 'inactive'
 }
+export enum GenderType {
+    MALE = 'male',
+    FEMALE  = 'female',
+    TRANSGENDER  = 'transgender'
+}
 
 export enum Effluent_Type {
     ELECTROPLATING = 'electroplating',
