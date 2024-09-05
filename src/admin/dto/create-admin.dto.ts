@@ -42,6 +42,18 @@ import { Membership_Status } from '../../core/enum';
       required: true,      
     })
     readonly about?: string;   
+    
+    @ApiProperty({
+      example: '',
+      required: true,      
+    })
+    readonly profileImg?: string;   
+    
+    @ApiProperty({
+      example: '',
+      required: true,      
+    })
+    readonly coverImg?: string;   
 
     @IsEnum(Membership_Status)
     @ApiProperty({

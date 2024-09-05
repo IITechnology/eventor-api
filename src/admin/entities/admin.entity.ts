@@ -29,6 +29,12 @@ export class Admin extends Model<Admin> {
   @Column(DataType.STRING(255))
   dob: string;
 
+  @Column(DataType.STRING(255))
+  profileImg: string;
+
+  @Column(DataType.STRING(255))
+  coverImg: string;
+
   @Default(Membership_Status.ACTIVE)
   @Column({
     type: DataType.ENUM,
