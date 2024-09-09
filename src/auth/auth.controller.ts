@@ -39,7 +39,7 @@ export class AuthController {
               let usertype: CreateAdminDto ={
                 name: user.name,
                 email: user.email,
-                contactNo: user?.contactNo
+                contactNo: user.contactNo
               }
               switch(user.role){
                 case RoleType.ADMIN :{

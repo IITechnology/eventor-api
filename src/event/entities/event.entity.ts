@@ -44,8 +44,12 @@ export class Events extends Model<Events> {
   @Column(DataType.STRING(100))
   coverImage: string;
 
-  // @AllowNull(false)
-  // @Column(DataType.BIGINT())
-  // userId: number;
+  @AllowNull(false)
+  @Column(DataType.BOOLEAN)
+  publish: number;
+
+  @AllowNull(false)
+  @Column(DataType.BIGINT)
+  user_id: number;
 
 }

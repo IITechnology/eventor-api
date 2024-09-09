@@ -42,7 +42,7 @@ import { Membership_Status } from '../../core/enum';
       example: 'male',
       required: true,      
     })
-    readonly gender: string;   
+    readonly gender?: string;   
 
     @ApiProperty({
       example: '',

@@ -19,6 +19,20 @@ import { ApiProperty } from '@nestjs/swagger';
     @IsNotEmpty()
     readonly description: string;
   
+    @IsNotEmpty()
+    @ApiProperty({
+      example: 1,
+      required: true,
+    })
+    readonly publish: boolean;
+
+    @IsNotEmpty()
+    @ApiProperty({
+      example: 11,
+      required: true,
+    })
+    readonly user_id: number;
+
     @ApiProperty({
       example: '12/12/2024',
       required: true,

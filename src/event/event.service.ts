@@ -11,10 +11,11 @@ export class EventsService {
   ) {}
 
   async create(createEventDto: CreateEventDto) {
-    const [userdata ,status] = await this.eventRepository.findOrCreate<Events>({
-      where: { title: createEventDto.title },
-      defaults: createEventDto,
-    });
+    const { publish, ...rest } = createEventDto;
+    const [userdata, status] = await this.eventRepository.findOrCreate<Events>({
+    where: { title: createEventDto.title },
+    defaults: { ...rest, publish: Number(publish) },
+  });
     return userdata;
   }
 
@@ -32,7 +33,7 @@ export class EventsService {
   }
 
   async update(id: number, updateLifterDto: UpdateEventDto) {
-    return this.eventRepository.update(updateLifterDto, {
+    return this.eventRepository.update({ ...updateLifterDto, publish: updateLifterDto.publishStatus }, {
       where: { id },
       returning: true,
     });
