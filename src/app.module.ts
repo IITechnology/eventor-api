@@ -12,6 +12,7 @@ import { join } from 'path';
 import { EmailModule } from './email/email.module';
 import { EventModule } from './event/event.module';
 import { CategoryModule } from './category/category.module';
+import { FileUploadModule } from './file/file-upload.module';
 
 @Module({
   imports: [
@@ -27,7 +28,8 @@ import { CategoryModule } from './category/category.module';
     CategoryModule,
     NotificationModule,
     PdfModule,
-    EmailModule
+    EmailModule,
+    FileUploadModule
   ],
   controllers: [],
 })

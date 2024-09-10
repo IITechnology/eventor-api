@@ -11,7 +11,9 @@ import {
   ConflictException,
   BadRequestException,
   UseGuards,
-  Query
+  Query,
+  UseInterceptors,
+  UploadedFile
 } from '@nestjs/common';
 import { JwtAuthGuard } from '../core/guards/jwt-auth.guard';
 import { RolesGuard } from '../core/guards/roles.guard';
@@ -21,9 +23,12 @@ import { UpdateAdminDto } from './dto/update-admin.dto';
 import { CreateUserDto } from '../users/dto/createuser.dto';
 import { RoleType } from '../core/enum';
 import { AuthService } from '../auth/auth.service';
-import { ApiTags,ApiBearerAuth } from '@nestjs/swagger';
+import { ApiTags,ApiBearerAuth, ApiConsumes, ApiBody } from '@nestjs/swagger';
 import { Roles } from '../core/decorator/roles.decorator';
-
+import { FileInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
+import { FileExtender } from 'src/core/interceptors/FileInterceptor';
+import { FileUploadDto } from 'src/file/dto/file-upload.dto';
 @ApiTags('admin')
 @ApiBearerAuth()
 @Roles(RoleType.ADMIN)
@@ -102,6 +107,36 @@ export class AdminController {
   //       clientId:company,
   //       requestedQty: qty
   //     };
-  //     return this.ServiceRequestService.findAllReq(whereCond);
+  //     return whereCond;
   //   }
+  @Post('UploadProfile')
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        userId: { type: 'string' },
+        file: {
+          type: 'string',
+          format: 'binary',
+        },
+      },
+    },
+  })
+  @UseInterceptors(FileExtender)
+  @UseInterceptors(FileInterceptor('file',{
+    storage: diskStorage({
+        destination: './public/profile',
+        filename: (req, file, cb) => {
+            const fileName: string = `${req.body.userId}-${Date.now()}-${file.originalname}`;
+            cb(null, fileName)
+        }
+    })
+    }))
+  async uploadProfile(@Body() body: FileUploadDto, @UploadedFile() file: Express.Multer.File) {
+    return {
+      file: file,
+      msg :'File uploaded successfully!'
+    };
+  }
 }

@@ -3,6 +3,7 @@ import { CreateAdminDto } from './dto/create-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
 import { ADMIN_REPOSITORY } from '../core/constants';
 import { Admin } from './entities/admin.entity';
+import { writeFile } from 'fs';
 @Injectable()
 export class AdminService {
   constructor(
@@ -39,5 +40,19 @@ export class AdminService {
 
   async remove(id: number) {
     return this.adminRepository.destroy({ where: { id } });
+  }
+
+  async uploadImage(image) {
+    try {
+      if (!image) return null;
+      const filename = `${Date.now()}-${image.originalname}`;
+      const imagePath: string = `public/profile/${filename}`;
+      return await writeFile(imagePath, image.buffer , { encoding: 'utf-8' } , (err) => {
+        if (err) throw err;
+        return { location: imagePath };
+      });
+    } catch (error) {
+      return null;
+    }
   }
 }

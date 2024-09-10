@@ -510,6 +510,44 @@
         ]
       }
     },
+    "/api/admin/UploadProfile": {
+      "post": {
+        "operationId": "AdminController_uploadProfile",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "string"
+                  },
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "admin"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
     "/api/notification/send-push-notification": {
       "post": {
         "operationId": "NotificationController_sendNotification",
@@ -575,6 +613,36 @@
         "tags": [
           "email"
         ]
+      }
+    },
+    "/api/upload": {
+      "post": {
+        "operationId": "FileUploadController_uploadFile",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "string"
+                  },
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
       }
     }
   },
