@@ -27,7 +27,7 @@ import { ApiTags,ApiBearerAuth, ApiConsumes, ApiBody } from '@nestjs/swagger';
 import { Roles } from '../core/decorator/roles.decorator';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
-import { FileExtender } from 'src/core/interceptors/FileInterceptor';
+import { AdminInterceptor, FileExtender } from 'src/core/interceptors/FileInterceptor';
 import { FileUploadDto } from 'src/file/dto/file-upload.dto';
 @ApiTags('admin')
 @ApiBearerAuth()
@@ -109,33 +109,13 @@ export class AdminController {
   //     };
   //     return whereCond;
   //   }
-  @Post('UploadProfile')
+  @Post('profile/:id')
   @ApiConsumes('multipart/form-data')
-  @ApiBody({
-    schema: {
-      type: 'object',
-      properties: {
-        userId: { type: 'string' },
-        file: {
-          type: 'string',
-          format: 'binary',
-        },
-      },
-    },
-  })
-  @UseInterceptors(FileExtender)
-  @UseInterceptors(FileInterceptor('file',{
-    storage: diskStorage({
-        destination: './public/profile',
-        filename: (req, file, cb) => {
-            const fileName: string = `${req.body.userId}-${Date.now()}-${file.originalname}`;
-            cb(null, fileName)
-        }
-    })
-    }))
-  async uploadProfile(@Body() body: FileUploadDto, @UploadedFile() file: Express.Multer.File) {
+  @ApiBody(AdminInterceptor.body)
+  @UseInterceptors(FileInterceptor('file',{storage:AdminInterceptor.storage}))
+  async uploadProfile(@Param('id') id: number, @UploadedFile() file: Express.Multer.File) {
     return {
-      file: file,
+      url: `/profile/${file.filename}`,
       msg :'File uploaded successfully!'
     };
   }

@@ -11,18 +11,21 @@ import {
   NotFoundException,
   ConflictException,
   BadRequestException,
-  UseGuards
+  UseGuards,
+  UseInterceptors,
+  UploadedFile
 } from '@nestjs/common';
 import { JwtAuthGuard } from '../core/guards/jwt-auth.guard';
 import { RolesGuard } from '../core/guards/roles.guard';
 import { EventsService } from './event.service';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
-import { ApiTags,ApiBearerAuth } from '@nestjs/swagger';
+import { ApiTags,ApiBearerAuth, ApiConsumes, ApiBody } from '@nestjs/swagger';
 import { AuthService } from '../auth/auth.service';
 import { RoleType } from '../core/enum';
 import { Roles } from '../core/decorator/roles.decorator';
-import { CreateUserDto } from '../users/dto/createuser.dto';
+import { EventsInterceptor } from 'src/core/interceptors/FileInterceptor';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 
 @ApiTags('events')
@@ -100,4 +103,14 @@ export class EventsController {
     }
   }
 
+  @Post('coverImage/:id')
+  @ApiConsumes('multipart/form-data')
+  @ApiBody(EventsInterceptor.body)
+  @UseInterceptors(FileInterceptor('file',{storage:EventsInterceptor.storage}))
+  async coverImage(@Param('id') id: number,@UploadedFile() file: Express.Multer.File) {
+    return {
+      url: `/events/${file.filename}`,
+      msg :'File uploaded successfully!'
+    };
+  }
 }

@@ -238,6 +238,50 @@
         ]
       }
     },
+    "/api/events/coverImage/{id}": {
+      "post": {
+        "operationId": "EventsController_coverImage",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "events"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
     "/api/category": {
       "post": {
         "operationId": "CategoryController_create",
@@ -510,10 +554,19 @@
         ]
       }
     },
-    "/api/admin/UploadProfile": {
+    "/api/admin/profile/{id}": {
       "post": {
         "operationId": "AdminController_uploadProfile",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -521,9 +574,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "userId": {
-                    "type": "string"
-                  },
                   "file": {
                     "type": "string",
                     "format": "binary"
