@@ -4,6 +4,7 @@ import {
     IsEnum
   } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+import { Publish } from 'src/core/enum';
   export class CreateEventDto {
     @ApiProperty({
       example: 'Sample Title',
@@ -19,12 +20,15 @@ import { ApiProperty } from '@nestjs/swagger';
     @IsNotEmpty()
     readonly description: string;
   
-    @IsNotEmpty()
+    @IsEnum(Publish)
     @ApiProperty({
-      example: 1,
+      enum: Publish,
       required: true,
+      example: 1,
     })
-    readonly publish: boolean;
+    
+    @IsNotEmpty()
+    readonly publish: Publish;
 
     @IsNotEmpty()
     @ApiProperty({
@@ -70,24 +74,17 @@ import { ApiProperty } from '@nestjs/swagger';
     readonly city: string;
   
     @ApiProperty({
-      example: 'Category 1',
-      required: true,
+      example: '1',
+      required: false,
     })
 
-    @IsNotEmpty()
     readonly category: string;
     
     @ApiProperty({
-      example: 'Category-1',
-      required: true,
-    })
-    
-    @ApiProperty({
       example: 'https://unsplash.it/20/20?id=1',
-      required: true,
+      required: false,
     })
-    @IsNotEmpty()
-    readonly coverImage: string;
+    readonly coverImage?: string;
 
     // @ApiProperty({
     //   example: 12,

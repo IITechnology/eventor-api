@@ -11,12 +11,7 @@ export class EventsService {
   ) {}
 
   async create(createEventDto: CreateEventDto) {
-    const { publish, ...rest } = createEventDto;
-    const [userdata, status] = await this.eventRepository.findOrCreate<Events>({
-    where: { title: createEventDto.title },
-    defaults: { ...rest, publish: Number(publish) },
-  });
-    return userdata;
+    return await this.eventRepository.create<Events>(createEventDto);
   }
 
   async findAll() {
@@ -33,7 +28,7 @@ export class EventsService {
   }
 
   async update(id: number, updateLifterDto: UpdateEventDto) {
-    return this.eventRepository.update({ ...updateLifterDto, publish: updateLifterDto.publishStatus }, {
+    return this.eventRepository.update({ ...updateLifterDto }, {
       where: { id },
       returning: true,
     });

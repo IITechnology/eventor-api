@@ -19,6 +19,10 @@ export enum Membership_Status {
     ACTIVE = 'active',
     INACTIVE  = 'inactive'
 }
+export enum Publish {
+    ACTIVE = 1,
+    INACTIVE  = 0
+}
 export enum GenderType {
     MALE = 'male',
     FEMALE  = 'female',

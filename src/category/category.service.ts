@@ -11,11 +11,7 @@ export class CategoryService {
   ) {}
 
   async create(createCategoryDto: CreateCategoryDto) {
-    const [userdata ,status] = await this.categoryRepository.findOrCreate<Category>({
-      where: { title: createCategoryDto.title },
-      defaults: createCategoryDto,
-    });
-    return userdata;
+    return await this.categoryRepository.create<Category>(createCategoryDto);
   }
 
   async findAll() {

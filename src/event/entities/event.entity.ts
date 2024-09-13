@@ -45,7 +45,7 @@ export class Events extends Model<Events> {
   coverImage: string;
 
   @AllowNull(false)
-  @Column(DataType.BOOLEAN)
+  @Column(DataType.INTEGER)
   publish: number;
 
   @AllowNull(false)
