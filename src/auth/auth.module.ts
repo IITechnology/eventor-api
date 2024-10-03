@@ -10,12 +10,14 @@ import { UsersModule } from '../users/users.module';
 import { AdminModule } from '../admin/admin.module';
 import { EventModule } from 'src/event/event.module';
 import { CategoryModule } from 'src/category/category.module';
+import { TokenModule } from 'src/token/token.module';
 
 @Module({
   imports: [
     PassportModule,
     UsersModule,
     EventModule,
+    TokenModule,
     CategoryModule,
     AdminModule,
     JwtModule.register({

@@ -5,6 +5,7 @@ import { User } from '../../users/entities/user.entity';
 import { Admin } from '../../admin/entities/admin.entity';
 import { Events } from 'src/event/entities/event.entity';
 import { Category } from 'src/category/entities/category.entity';
+import { Token } from 'src/token/entities/token.entity';
 
 export const databaseProviders = [
   {
@@ -25,7 +26,7 @@ export const databaseProviders = [
           config = databaseConfig.development;
       }
       const sequelize = new Sequelize(config);
-      sequelize.addModels([User, Admin, Events, Category]);
+      sequelize.addModels([User, Admin, Events, Category, Token]);
       await sequelize.sync();
       return sequelize;
     },

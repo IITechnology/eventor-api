@@ -13,6 +13,7 @@ import { EmailModule } from './email/email.module';
 import { EventModule } from './event/event.module';
 import { CategoryModule } from './category/category.module';
 import { FileUploadModule } from './file/file-upload.module';
+import { TokenModule } from './token/token.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { FileUploadModule } from './file/file-upload.module';
     AuthModule,
     AdminModule,
     EventModule,
+    TokenModule,
     CategoryModule,
     NotificationModule,
     PdfModule,

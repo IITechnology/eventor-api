@@ -53,3 +53,25 @@ export enum CategoryIcon {
     icon = 'icon',
     image  = 'image',
 }
+
+export enum TRANSACTION_STATUS {
+    PENDING = "pending",
+    COMPLETED = "completed",
+    INPROGRESS = "inprogress",
+    CANCELLED = "cancelled",
+    REJECTED = "rejected"
+  }
+  
+  export enum TRANSACTION_MODE {
+    UPI = "upi",
+    internet = "internet",
+    card = "card",
+    wallet = "wallet",
+    bankToWallet = "bankToWallet",
+  }
+  
+  export enum TRANSACTION_TYPE {
+    CREDIT = "credit",
+    DEBIT = "debit",
+  }
+  

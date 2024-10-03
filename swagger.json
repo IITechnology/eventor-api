@@ -282,6 +282,117 @@
         ]
       }
     },
+    "/api/token": {
+      "post": {
+        "operationId": "TokenController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTokenDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "token"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "TokenController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "token"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/token/{transactionStatus}/{transactionMode}/{transactionType}": {
+      "get": {
+        "operationId": "TokenController_findOne",
+        "parameters": [
+          {
+            "name": "transactionStatus",
+            "required": false,
+            "in": "path",
+            "description": "Status Optional",
+            "schema": {
+              "enum": [
+                "pending",
+                "completed",
+                "inprogress",
+                "cancelled",
+                "rejected"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "transactionMode",
+            "required": false,
+            "in": "path",
+            "description": "Mode Optional",
+            "schema": {
+              "enum": [
+                "upi",
+                "internet",
+                "card",
+                "wallet",
+                "bankToWallet"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "transactionType",
+            "required": false,
+            "in": "path",
+            "description": "Type Optional",
+            "schema": {
+              "enum": [
+                "credit",
+                "debit"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "token"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
     "/api/category": {
       "post": {
         "operationId": "CategoryController_create",
@@ -940,6 +1051,108 @@
           "end_time",
           "address",
           "city"
+        ]
+      },
+      "CreateTokenDto": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "example": "token"
+          },
+          "userId": {
+            "type": "string",
+            "example": "userId"
+          },
+          "transactionId": {
+            "type": "string",
+            "example": "transactionId"
+          },
+          "transactionType": {
+            "type": "string",
+            "enum": [
+              "credit",
+              "debit"
+            ],
+            "example": "credit | debit"
+          },
+          "transactionDescription": {
+            "type": "string",
+            "example": "transactionDescription"
+          },
+          "transactionAmount": {
+            "type": "number",
+            "example": "transactionAmount"
+          },
+          "transactionStatus": {
+            "type": "string",
+            "example": "pending | completed | inprogress | cancelled | rejected",
+            "enum": [
+              "pending",
+              "completed",
+              "inprogress",
+              "cancelled",
+              "rejected"
+            ]
+          },
+          "transactionDate": {
+            "format": "date-time",
+            "type": "string",
+            "example": "transactionDate"
+          },
+          "transactionMode": {
+            "type": "string",
+            "example": "upi | internet | card | wallet | bankToWallet",
+            "enum": [
+              "upi",
+              "internet",
+              "card",
+              "wallet",
+              "bankToWallet"
+            ]
+          },
+          "transactionReference": {
+            "type": "string",
+            "example": "transactionReference"
+          },
+          "transactionReceipt": {
+            "type": "string",
+            "example": "transactionReceipt"
+          },
+          "transactionNotes": {
+            "type": "string",
+            "example": "transactionNotes"
+          },
+          "transactionResponse": {
+            "type": "string",
+            "example": "transactionResponse"
+          },
+          "transactionResponseCode": {
+            "type": "string",
+            "example": "transactionResponseCode"
+          },
+          "transactionResponseMessage": {
+            "type": "string",
+            "example": "transactionResponseMessage"
+          },
+          "transactionResponseData": {
+            "type": "string",
+            "example": "transactionResponseData"
+          },
+          "transactionResponseStatus": {
+            "type": "string",
+            "example": "transactionResponseStatus"
+          }
+        },
+        "required": [
+          "token",
+          "userId",
+          "transactionId",
+          "transactionType",
+          "transactionAmount",
+          "transactionStatus",
+          "transactionDate",
+          "transactionMode"
         ]
       },
       "CreateCategoryDto": {
